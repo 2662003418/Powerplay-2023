@@ -110,25 +110,15 @@ public class BasicOpMode_fullTest extends LinearOpMode {
             double d3 = Math.abs(v3);
             double d4= Math.abs(v4);
 
-            if (gamepad1.a) {
+           
 
-                double denominator = Math.max(d1 + d2 + d3 + d4, 1) ;
-
-                leftFront.setPower(v1 / denominator);
-                rightFront.setPower(v2 / denominator);
-                leftRear.setPower(v3 / denominator);
-                rightRear.setPower(v4 / denominator);
-
-            } else {
-
-                double denominator = Math.max(d1 + d2 + d3 + d4, 1) * 1.2;
+                double denominator = Math.max(d1, Math.max(d2, Math.max(d3, Math.max(d4,1)))) ;
 
                 leftFront.setPower(v1 / denominator);
                 rightFront.setPower(v2 / denominator);
                 leftRear.setPower(v3 / denominator);
                 rightRear.setPower(v4 / denominator);
 
-            }
 
 
             if (gamepad1.left_trigger >0) {
