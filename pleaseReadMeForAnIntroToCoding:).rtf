@@ -1,0 +1,63 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+\
+\
+Intro: in FTC, we need to write two sets of codes for the robot. \
+\
+Teleop is responsible for converting diver inputs to robot movement. We have to read inputs from the controller. \
+\
+Autonomous is responsible for a period of time where the robot moves on its own, according to scripted movements or according to algorithms, so it can make decisions. \
+\
+\
+\
+\
+\
+\
+\
+Teleop:\
+\
+BasicOpMode_fullTest \'97> this is the Teleop script we used for 2023 FTC Powerplay. We usually only need one script for Teleop and the script in Github reads controls from a single driver. I have not yet ventured into two driver controls.\
+\
+\
+Teleop must contain codes for controlling the movement of robots (the drivetrain) and some sort of mechanism added, like an arm or a lift, which varies due to each year\'92s challenge. \
+\
+The portion of the code that deals with drivetrain don\'92t really have to be changed, unless the driver cannot adjust to the controls. \
+One possible improvement for the driving code is to add a slow mode so the robot can make more precise maneuvers when it is aiming for certain locations on the field. \
+\
+The specifics of converting controls is basically telling the robot how much power should go on each motor (or servo), since there are many motors on the robot and each motor has a different function, communicating power output on the motors allows the robot to complete different actions.\
+\
+For breakdown of code, please watch videos like : https://www.youtube.com/watch?v=gnSW2QpkGXQ&t=111s\
+\
+\
+\
+Autonomous:\
+\
+\
+Programming for autonomous is a lot trickier. \
+\
+It can be broken down into two parts. First, the robot must make a decision for what route or what action it should take. Then, the robot has to commit to that decision. \
+\
+Pure hardcoding, or scripting the movement of the robot does not involve letting the robot making any decisions. In autonomous the robot would simply move to the corresponding location according to prescribed orders.\
+\
+Allowing the robot to make decisions involves some kind of sensors or image recognition, giving it the ability to perceive its surroundings on the field. After the sensors read inputs, we can use if statements (there are many other ways like while loops) to set conditions for the robot to make decisions. \
+\
+We need to write actions for the robot to perform corresponding to the decisions it makes, like moving to zone 2 instead of zone 1, or parking instead of picking up a cone. Such actions are similar to how we write our Teleop script, basically telling the robot how much power output goes to each motor. Except, we also have to tell the robot how long do the motors have to run for each action.\
+\
+There are two methods to tell the robot how long the motors have to run.\
+\
+First, the time method: in android studio we can write action functions that include a time parameter. The motors will simply turn for the given amount of time. However, as the battery level decreases, the given number of rotations that a motor completes in a given amount of time decreases. So, the time method is simple but not very accurate.\
+\
+Second, using encoders: encoders count the number of rotations that a motor spins. We can figure out how much rotations is required for an action to be completed and set that number as the condition for the motors to spin. The motors will reach that given amount of rotation regardless of the time it takes or the battery level. The encoder method is more sophisticated but also more accurate. \
+\
+Fancier stuff: instead of relying on color sensors for recognizing simple patterns, we can use image recognition (Tensorflow or AprilTags). These more advanced methods of visual learning require us to download extra plugins for android studio and come as independent Opmodes, so beyond modifying the conditions of recognition to our needs, we also need to implement the actions the robot will perform in autonomous into the Opmode. I haven\'92t yet figured out how to run Tensor flow in autonomous, but I have included an unfinished script on Github ( named concept tensor flow). \
+\
+If you have finished reading this document and have fully grasped Teleop and the easier autonomous codes, feel free to challenge yourself and play around with visual learning. That would be a great thing to brag about during competition interviews!\
+\
+Good Luck and I sincerely hope that you enjoy your robotics season, this is Bertrand from class 2023, checking out : D}
